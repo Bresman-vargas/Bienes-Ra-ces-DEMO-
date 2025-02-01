@@ -1,0 +1,68 @@
+---
+import InfectionIco from '../components/icons/Infection.astro';
+import SidebarExpandIco from '../components/icons/SidebarExpand.astro';
+import SidebarCollapseIco from '../components/icons/SidebarCollapse.astro';
+import LinksHeader from '../components/LinksHeader.astro';
+---
+
+<header class="bg-[var(--background-color)] text-[var(--text-color)] fixed z-50 top-0 left-0 right-0 font-semibold">
+  <div class="max-w-[1200px] mx-auto px-4 flex items-center justify-between h-12">
+    <a href="/" title="Infection Real Estate">
+      <InfectionIco class="w-28"/>
+    </a> 
+
+    <!-- Checkbox para el toggele  -->
+    <input type="checkbox" id="menu-toggle" class="peer hidden" checked/>
+    <label for="menu-toggle" class="cursor-pointer sm:hidden">
+      <SidebarExpandIco/>
+    </label>
+
+    <label for="menu-toggle" class="fixed inset-0 peer-checked:hidden sm:hidden backdrop-blur-xs z-0">
+    </label>
+
+    <nav class="fixed sm:static top-0 bottom-0 right-0 peer-checked:right-[-300px] bg-[var(--background-dark-color)] text-[var(--text-color)] sm:bg-transparent w-60 sm:w-auto">
+      
+      <label for="menu-toggle" class="cursor-pointer sm:hidden flex p-4">
+        <SidebarCollapseIco/>
+      </label>
+      
+      <ul class="flex flex-col sm:flex-row items-center">
+        <LinksHeader/>
+        <div class="flex items-center ml-auto px-4 max-sm:pt-4">
+          <label for="themeToggle" class="inline-flex items-center relative cursor-pointer">
+            <span class="sr-only">Activar/Desactivar tema</span> 
+            <input type="checkbox" id="themeToggle" class="peer sr-only" aria-label="Alternar modo oscuro">
+
+            <div class="bg-[var(--text-color)] peer-checked:bg-[var(--background-dark-color)] w-12 h-6 rounded-full transition-colors"></div>
+
+            <div class="absolute left-1 top-1 w-4 h-4 bg-[var(--background-dark-color)] peer-checked:bg-[#c66a0e] rounded-full transition-transform transform peer-checked:translate-x-6 flex">
+            </div>
+          </label>
+        </div>
+      </ul>
+    </nav>
+  </hr>
+  </div>
+</header>
+
+<script is:inline>
+document.addEventListener("DOMContentLoaded", () => {
+    const themeToggle = document.getElementById("themeToggle");
+    const storedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    
+    // Determinar el tema inicial
+    const isDarkMode = storedTheme ? storedTheme === "dark" : prefersDark;
+    
+    // Aplicar el tema
+    document.documentElement.classList.toggle("dark-mode", isDarkMode);
+    themeToggle.checked = isDarkMode;
+
+    // Listener para cambios manuales
+    themeToggle.addEventListener("change", () => {
+        const newTheme = themeToggle.checked ? "dark" : "light";
+        document.documentElement.classList.toggle("dark-mode", newTheme === "dark");
+        localStorage.setItem("theme", newTheme);
+    });
+});
+</script>

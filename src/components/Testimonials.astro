@@ -1,0 +1,48 @@
+---
+const testimonials = [
+  {
+    img: "/src/components/img/anuncio1.webp",
+    posted: "January 15, 2025",
+    by: "Bresman Doe",
+    description:
+      "Planning to build? Start with a solid foundation and choose quality materials to ensure a long-lastinghome.",
+  },
+  {
+    img: "/src/components/img/anuncio3.webp",
+    posted: "23 May 2023",
+    by: "Bresman Doe",
+    description:
+      "The team was incredibly professional, and the service exceeded all my expectations. I'm thrilled with my new home. Thank you!",
+  },
+];
+---
+
+{
+  testimonials.map((testi) => {
+    const { img, posted, by, description } = testi;
+    return (
+      <div>
+        <div
+          class="flex flex-col bg-[var(--background-dark-color)] px-10 py-5 max-w-lg my-4"
+          style="border-radius: 1.5rem 0;"
+        >
+          <div class="flex justify-center gap-4 mb-4">
+            <img class="size-10 rounded-full" src={img} alt="" />
+            <div class="">
+              <h3 class="text-xl font-bold">{by}</h3>
+              <p>
+                Posted on:{" "}
+                <span class="text-[var(--price-color)] font-bold">
+                  {posted}
+                </span>
+              </p>
+            </div>
+          </div>
+          <blockquote class="text-center max-w-80 italic">
+            {`\"${description}\" `}
+          </blockquote>
+        </div>
+      </div>
+    );
+  })
+}

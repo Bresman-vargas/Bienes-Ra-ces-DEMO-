@@ -1,0 +1,22 @@
+---
+const { href, text } = Astro.props;
+---
+
+<a
+  href={href}
+  class={`text-[var(--text-color)] bg-[var(--background-color)] border-[var(--secondary-color)] hover:text-[var(--background-dark-color)] hover:bg-[var(--text-color)] hover:border-[var(--background-dark-color)] border font-bold px-4 py-2 rounded-md flex items-center justify-center max-w-40 transition-all duration-200 ease-out hover:scale-105 cursor-pointer ${Astro.props.class}`}
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="25"
+    height="25"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    class="icon icon-tabler icons-tabler-filled icon-tabler-point"
+    ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+      d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z"
+    ></path>
+  </svg>
+
+  <span class="ml-2">{text}</span>
+</a>

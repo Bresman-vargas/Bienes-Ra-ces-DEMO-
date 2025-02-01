@@ -1,0 +1,136 @@
+---
+import BedIco from "./icons/properties/BedIco.astro";
+import AreaIco from "./icons/properties/AreaIco.astro";
+import BathIco from "./icons/properties/BathroomIco.astro";
+import GarageIco from "./icons/properties/GarageIco.astro";
+
+const properties = [
+  {
+    title: "Modern Home with Spacious Backyard and Premium Finishes",
+    description:
+      "Step into this beautifully designed 3-bedroom, 2.5-bathroom home that blends comfort and style in perfect harmony.",
+    price: "$1,200,000",
+    bedrooms: 3,
+    bathrooms: 2,
+    garage: 2,
+    area: "2,500 sqft",
+    sold: false,
+    img: "/src/components/img/anuncio1.webp",
+  },
+  {
+    title: "Luxury Home with Stunning Views and High-End Amenities",
+    description:
+      "Experience the epitome of luxury living in this 4-bedroom, 3-bathroom home with breathtaking views and top-of-the-line amenities.",
+    price: "$2,500,000",
+    bedrooms: 4,
+    bathrooms: 3,
+    garage: 3,
+    area: "3,500 sqft",
+    sold: true,
+    img: "/src/components/img/anuncio2.webp",
+  },
+  {
+    title: "Charming Home with Modern Upgrades and a Cozy Atmosphere",
+    description:
+      "Fall in love with this charming 2-bedroom, 1-bathroom home that boasts modern upgrades and a cozy atmosphere.",
+    price: "$800,000",
+    bedrooms: 2,
+    bathrooms: 1,
+    garage: 1,
+    area: "1,800 sqft",
+    sold: true,
+    img: "/src/components/img/anuncio3.webp",
+  },
+  {
+    title: "Contemporary Home with Open Floor Plan and Designer Touches",
+    description:
+      "Discover the perfect blend of comfort and style in this 3-bedroom, 2-bathroom home with an open floor plan and designer touches.",
+    price: "$1,000,000",
+    bedrooms: 3,
+    bathrooms: 2,
+    garage: 2,
+    area: "2,000 sqft",
+    sold: false,
+    img: "/src/components/img/anuncio4.webp",
+  },
+  {
+    title: "Stylish Home with Spacious Layout and High-End Features",
+    description:
+      "Live in luxury in this stylish 4-bedroom, 3.5-bathroom home with a spacious layout and high-end features.",
+    price: "$2,000,000",
+    bedrooms: 4,
+    bathrooms: 3,
+    garage: 3,
+    area: "3,000 sqft",
+    sold: true,
+    img: "/src/components/img/anuncio5.webp",
+  },
+  {
+    title: "Cozy Home with Rustic Charm and Modern Upgrades",
+    description:
+      "Experience the best of both worlds in this cozy 2-bedroom, 1.5-bathroom home with rustic charm and modern upgrades.",
+    price: "$750,000",
+    bedrooms: 2,
+    bathrooms: 1,
+    garage: 1,
+    area: "1,700 sqft",
+    sold: false,
+    img: "/src/components/img/anuncio6.webp",
+  },
+];
+---
+
+{
+  properties.map((propertie) => {
+    const {
+      title,
+      description,
+      price,
+      bedrooms,
+      bathrooms,
+      garage,
+      sold,
+      img,
+    } = propertie;
+
+    const features = [
+      { icon: <BedIco />, label: bedrooms },
+      { icon: <BathIco />, label: bathrooms },
+      { icon: <GarageIco />, label: garage },
+    ];
+    return (
+      <a href="/">
+        <div class="grid sm:grid-cols-3 gap-4 grid-cols-1 max-w-3xl mx-auto p-3 my-3 relative hover:bg-[var(--background-dark-color)] border border-[var(--secondary-color)] rounded-sm">
+          <img class="h-full object-cover rounded-sm" src={img} alt={title} />
+          <div class="col-span-2 grid grid-cols-2">
+            <h3 class="col-span-2 text-xl font-bold">{title}</h3>
+            <p class="col-span-2">{description}</p>
+
+            <div class="col-span-2 grid grid-cols-2 ">
+              <span class="col-span-2 row-start-1 sm:col-span-2 sm:row-start-1 max-sm:text-center text-2xl text-[var(--price-color)] pt-4">
+                {price}
+              </span>
+
+              <div class="flex gap-4 justify-center col-span-2 sm:col-span-1 row-start-3 sm:row-start-1 pt-4 px-2">
+                {features.map((feature) => (
+                  <span class="flex gap-2 items-center">
+                    {feature.icon}
+                    <div class="bg-[var(--secondary-color)] size-5 dark:text-[var(--text-color)] flex items-center justify-center rounded-full font-semibold text-xs">
+                      {feature.label}
+                    </div>
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+          {sold && (
+            <span class="absolute top-0 left-0 bg-[var(--alert-color)] text-white px-5 py-1 font-semibold uppercase drop-shadow-sm">
+              Sold
+            </span>
+          )}
+          {/* <hr class="max-w-3xl col-span-1 sm:col-span-3"/> */}
+        </div>
+      </a>
+    );
+  })
+}

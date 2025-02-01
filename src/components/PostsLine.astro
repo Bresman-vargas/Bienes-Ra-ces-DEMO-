@@ -1,0 +1,38 @@
+---
+const posts = [
+    {
+        img: "/src/components/img/anuncio1.webp",
+        title: "Sustainable Architecture: Building a Greener Future",
+        posted: "23 May 2023",
+        by: "admin",
+        description: "Planning to build? Start with a solid foundation and choose quality materials to ensure a long-lastinghome."
+    },
+    {
+        img: "/src/components/img/anuncio3.webp",
+        title: "Sustainable Architecture: Building a Greener Future",
+        posted: "23 May 2023",
+        by: "admin",
+        description: "Planning to build? Start with a solid foundation and choose quality materials to ensure a long-lastinghome."
+    }
+]
+---
+
+{
+    posts.map(post => {
+        const {title, posted, by, description} = post;
+        return (
+        <div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-y-4 p-4 sm:min-w-96 max-w-xl hover:bg-[var(--background-dark-color)] transition-colors duration-100 ease-out border rounded-md dark:border-[var(--secondary-color)] border-[var(--secondary-color)] cursor-pointer">
+                <img src="/src/components/img/anuncio1.webp" class="rounded-sm" alt={title}>
+                <div class="col-span-2 flex flex-col gap-4 sm:ml-4">
+                    <h3 class="text-xl font-bold">{title}</h3>
+                    <p>Posted on: <span class="text-[var(--price-color)] font-bold">{posted}<br> </span> By: <span class="text-[var(--price-color)] font-bold">{by}</span></p>
+                </div>
+                <p class="col-span-1 sm:col-span-3 row-start-3 sm:row-start-2">
+                    {description}
+                </p>
+            </div>
+        </div>
+        )
+    })
+}

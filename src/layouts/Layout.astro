@@ -1,22 +1,63 @@
+---
+import HeaderPage from "../components/Header.astro";
+const { title, description } = Astro.props;
+import '../styles/global.css'
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={title} />
+    <meta name="description" content={description} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+
+    <title>bresman bres</title>
+  </head>
+  <body>
+    <HeaderPage />
+    <slot />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  /* Variables para el tema claro */
+  :root {
+    --background-color: #ffffff;
+    --background-dark-color: #f6f6f6;
+    --text-color: #000000;
+    --primary-color: #e7dada;
+    --secondary-color: #eae8de;
+    --accent-color: #f2f2f2;
+    --price-color: #611609;
+    --alert-color: #7a0000;
+  }
+
+  /* Variables para el tema oscuro */
+  .dark-mode {
+    --background-color: #0c0c0c;
+    --background-dark-color: #222020;
+    --text-color: #ffffff;
+    --primary-color: #e9e7db;
+    --secondary-color: #000000;
+    --accent-color: #101010;
+    --price-color: #cfa43f;
+    --alert-color: #ad0000;
+  }
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: "Mulish", serif;
+  }
 </style>
