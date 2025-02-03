@@ -1,6 +1,5 @@
 ---
 import BedIco from "./icons/properties/BedIco.astro";
-import AreaIco from "./icons/properties/AreaIco.astro";
 import BathIco from "./icons/properties/BathroomIco.astro";
 import GarageIco from "./icons/properties/GarageIco.astro";
 
@@ -100,8 +99,10 @@ const properties = [
     ];
     return (
       <a href="/">
-        <div class="grid sm:grid-cols-3 gap-4 grid-cols-1 max-w-3xl mx-auto p-3 my-3 relative hover:bg-[var(--background-dark-color)] border border-[var(--secondary-color)] rounded-sm">
-          <img class="h-full object-cover rounded-sm" src={img} alt={title} />
+        <div class="grid sm:grid-cols-3 gap-4 grid-cols-1 max-w-3xl mx-auto p-3 my-3 relative hover:bg-[var(--background-dark-color)] border border-[var(--secondary-color)] group overflow-hidden">
+          <div class="overflow-hidden rounded-sm">
+            <img class="transition-transform duration-300 ease-in-out group-hover:scale-110 h-full object-cover" src={img} alt={title} />
+          </div>
           <div class="col-span-2 grid grid-cols-2">
             <h3 class="col-span-2 text-xl font-bold">{title}</h3>
             <p class="col-span-2">{description}</p>

@@ -1,0 +1,56 @@
+---
+import ContainerSection from "../components/ContainerSection.astro";
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const blogPosts = await getCollection("blog");
+---
+
+<Layout>
+  <section
+    class="h-72 bg-[var(--secondary-color)] text-[var(--text-color)] flex items-center"
+  >
+    <ContainerSection class="text-center flex flex-col items-center gap-4">
+      <h1 class="text-6xl font-bold leading-20">Our Services</h1>
+      <p class="text-balance w-xl text-sm">
+        Our architecture company is dedicated to shaping the built environment
+        with innovative designs that inspire. At our architecture firm, our
+        mission is to create sustainable and timeless spaces that enhance the
+        quality of life..
+      </p>
+    </ContainerSection>
+  </section>
+
+  <section class="bg-[var(--secondary-color)] text-[var(--text-color)] pb-4">
+    <ContainerSection class="flex flex-col items-center">
+      <article
+        class="max-w-[680px] grid grid-cols-1 md:grid-cols-2 place-content-center gap-5"
+      >
+        {
+          blogPosts.map(services => {
+            const {slug, data} = services;
+            const { title, img, url, tag, description } = data;
+            return (
+              <div class="p-4 group overflow-hidden relative max-w-sm border border-[var(--background-dark-color)] bg-[var(--accent-color)] cursor-pointer">
+                <a href={`/blog/${slug}`} class="block">
+                  <div class="overflow-hidden rounded-sm">
+                    <img
+                      src={img}
+                      alt=""
+                      class="transition-transform duration-300 ease-in-out group-hover:scale-110 h-60 w-full object-cover"
+                    />
+                  </div>
+                  <h2 class="font-bold text-2xl py-3 hover:underline underline-offset-4 decoration-2 line-clamp-1">
+                    {title}
+                  </h2>
+                  <p class="pb-3 font-bold text-[var(--price-color)]">{tag}</p>
+                  <p class="text-sm line-clamp-3">{description}</p>
+                </a>
+              </div>
+            );
+          })
+        }
+      </article>
+    </ContainerSection>
+  </section>
+</Layout>

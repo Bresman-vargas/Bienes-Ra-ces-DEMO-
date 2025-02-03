@@ -1,0 +1,36 @@
+---
+const ourServicesCart = [
+  {
+    title: "Construction",
+    img : "src/components/img/64706c7466f54a74b2684edb_luis-magallon-G9LiY2ygCck-unsplash-p-500.jpg",
+    url : "/",
+    tag: "Planning",
+    description: "Throughout construction, our architecture company provides project management services, overseeing the progress",
+  },
+];
+---
+
+{
+  ourServicesCart.map((services) => {
+    const { title, img, url, tag, description } = services;
+    return (
+      <div class="p-4 group overflow-hidden relative max-w-sm border rounded-sm border-[var(--background-dark-color)] bg-[var(--accent-color)] cursor-pointer">
+        <a href={url} class="block">
+          <div class="overflow-hidden rounded-sm">
+            <img
+              src ={img}
+              alt=""
+              class="transition-transform duration-300 ease-in-out group-hover:scale-110 h-60 w-full object-cover"
+            />
+          </div>
+          <h2 class="font-bold text-2xl py-3 hover:underline underline-offset-4 decoration-2 line-clamp-1">
+            {title}
+          </h2>
+          <p class="pb-3 font-bold text-[var(--price-color)]">{tag}</p>
+          <p class="text-sm line-clamp-3">{description}
+          </p>
+        </a>
+      </div>
+    );
+  })
+}
